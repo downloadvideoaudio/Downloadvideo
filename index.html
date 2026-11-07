@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡️ SaveMedia Bot — Скачать видео из соцсетей</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0e12;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --accent-color: #229ed9; /* Официальный цвет Telegram */
+            --accent-glow: rgba(34, 158, 217, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Мягкая фоновая подсветка */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: var(--accent-glow);
+            filter: blur(140px);
+            z-index: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 40px 24px;
+            text-align: center;
+            z-index: 1;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #f1f5f9;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 18px;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            box-shadow: 0 8px 30px var(--accent-glow);
+        }
+
+        .btn:hover, .btn:active {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(34, 158, 217, 0.6);
+            background-color: #24a1de;
+        }
+
+        /* Иконка Telegram внутри кнопки */
+        .btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #ffffff;
+        }
+
+        .features {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .feature-item span {
+            color: #4ade80; /* Зеленый цвет для галочек */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-container">
+            <span class="badge">Instagram</span>
+            <span class="badge">TikTok</span>
+            <span class="badge">Shorts</span>
+        </div>
+
+        <h1>Скачать видео без водяных знаков</h1>
+        <p>Хочешь быстро скачивать ролики, Reels, фото и музыку из соцсетей в максимальном качестве? Все инструменты уже собраны в нашем Telegram-боте.</p>
+
+        <!-- Ваша реферальная ссылка -->
+        <a href="tg://resolve?domain=Ins_Tik_Tok_bot" class="btn">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-1-.65-.35-1 .22-1.62.15-.15 2.71-2.48 2.76-2.7.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.95 1.23-5.51 3.63-.52.36-.99.53-1.41.52-.46-.01-1.35-.26-2.01-.48-.81-.27-1.46-.42-1.4-.88.03-.24.36-.49.99-.74 3.88-1.69 6.47-2.8 7.77-3.32 3.7-1.47 4.46-1.73 4.96-1.74.11 0 .36.03.52.16.14.11.18.27.2.42z"/>
+            </svg>
+            Открыть бота в Telegram
+        </a>
+
+        <!-- Список преимуществ для повышения конверсии -->
+        <div class="features">
+            <div class="feature-item"><span>✓</span> Без водяных знаков и логотипов</div>
+            <div class="feature-item"><span>✓</span> Оригинальное HD / 4K качество</div>
+            <div class="feature-item"><span>✓</span> Бесплатно и без ограничений</div>
+            <div class="feature-item"><span>✓</span> Скачивание в 1 клик по ссылке</div>
+        </div>
+    </div>
+
+</body>
+</html>
